@@ -14,8 +14,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NavComponent {
   accountService = inject(AccountService);
-  toastr=inject(ToastrService);
-  model: any = {};
+  toastr = inject(ToastrService);
+  model: any = {
+    username: 'lisa',
+    password: 'Pa$$w0rd'
+  };
 
   login() {
     console.log(this.model);
