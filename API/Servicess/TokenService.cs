@@ -19,22 +19,21 @@ public class TokenService(IConfiguration config) : ITokenService
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey));
 
         var claims = new List<Claim>(){
-            new(ClaimTypes.NameIdentifier,appUser.UserName)
+            new(ClaimTypes.NameIdentifier,appUser.Id.ToString()),
+            new(ClaimTypes.Name,appUser.UserName)
         };
 
-        var  creds=new SigningCredentials(key,SecurityAlgorithms.HmacSha512Signature);
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
             Expires = DateTime.UtcNow.AddDays(7),
-            SigningCredentials=creds
+            SigningCredentials = creds
         };
 
-        var tokenHandler=new JwtSecurityTokenHandler();
-        var token=tokenHandler.CreateToken(tokenDescriptor);
-
-
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var token = tokenHandler.CreateToken(tokenDescriptor);
 
         return tokenHandler.WriteToken(token);
     }
