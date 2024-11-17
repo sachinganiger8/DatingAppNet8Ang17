@@ -49,7 +49,7 @@
 
 @if(membersservice.paginatedResult()?.pagination){
 <div class="d-flex justify-content-center">
-    <pagination [boundaryLinks]="true" [totalItems]="77" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+    <pagination [boundaryLinks]="true" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
         lastText="&raquo;" [totalItems]="membersservice.paginatedResult()?.pagination!.totalItems"
         [itemsPerPage]="membersservice.paginatedResult()?.pagination!.itemsPerPage" [maxSize]="10"
         [(ngModel)]="membersservice.paginatedResult()?.pagination!.currentPage" (pageChanged)="pageChanged($event)">
