@@ -5,11 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
-public class BuggyController(DataContext dataContext) :BaseApiController{
+public class BuggyController : BaseApiController
+{
 
     [Authorize]
     [HttpGet("auth")]
-    public ActionResult<string> GetAuth(){
+    public ActionResult<string> GetAuth()
+    {
         return "secrete string";
     }
 
@@ -23,7 +25,6 @@ public class BuggyController(DataContext dataContext) :BaseApiController{
     public ActionResult<string> GetServerError()
     {
         throw new Exception("Something went wrong in the serveer");
-        return null;
     }
 
     [HttpGet("bad-request")]
