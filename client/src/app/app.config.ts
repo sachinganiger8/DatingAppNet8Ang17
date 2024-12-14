@@ -18,6 +18,6 @@ export const appConfig: ApplicationConfig = {
   provideToastr({
     positionClass: 'toast-bottom-right'
   }),
-  importProvidersFrom(NgxSpinnerModule, TimeagoModule.forRoot(), ModalModule.forRoot())
+    importProvidersFrom(NgxSpinnerModule.forRoot({ type:"ball-scale-ripple-multiple"}), TimeagoModule.forRoot(), ModalModule.forRoot())
   ]
 };
